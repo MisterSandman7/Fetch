@@ -136,3 +136,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Personal files
+fetch.py
+fetch.db
+fetch.log
+tokens.py

@@ -1,5 +1,8 @@
 # Fetch!
-![Fetch logo](./fetch_logo.png)
+<p align="center">
+  <img src="./fetch_logo.png">
+</p>
+
 A simple Discord bot that allows servers to track Twitter users by relaying their posts to a specific channel within the server itself.
 Made thanks to the Discord API and the Python Twitter API (Tweepy).
 

@@ -274,5 +274,6 @@ async def update_fetch():
 async def on_ready():
     print('Bot is online.')
     update_fetch.start()
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!fetch help"))
 
 client.run(discord_token)

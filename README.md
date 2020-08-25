@@ -7,9 +7,9 @@ A simple Discord bot that allows servers to track Twitter users by relaying thei
 Made thanks to the Discord API and the Python Twitter API (Tweepy).
 
 ## Bot commands
+Use the prefix '!fetch ' to access the bot, followed by any of these commands.  **WARNING**: removing the bot from yours server will erase all of your Fetch settings from the database. 
 Command | Input | Description
 --------|-------|------------
-Use the prefix '!fetch ' to access the bot, followed by any of these commands. **WARNING**: removing the bot from yours server will erase all of your Fetch settings from the database.
 **set-channel** | `<channel_id>` | Set the channel in which the bot will post. Requires channel ID.
 **remove-channel** | `None` | Remove the channel that the bot uses from the database.
 **get-channel** | `None` | Returns ID and name of the channel that the bot uses.

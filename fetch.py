@@ -229,7 +229,7 @@ def remove_guilds():
 client.remove_command('help')
 @client.command(name='help')
 async def help(ctx):
-    embed_var = discord.Embed(title='Commands',desciption='Use the prefix \'!fetch \' to access the bot, followed by any of these commands.\n**WARNING**: removing the bot from yours server will erase all of your Fetch settings from the database.', color=0x0)
+    embed_var = discord.Embed(title='Commands',desciption='Use the prefix \'!fetch \' to access the bot, followed by any of these commands.\n**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database.', color=0x0)
     embed_var.add_field(name='set-channel `<channel_id>`', value='Set the channel in which the bot will post. Requires channel ID.', inline=False)
     embed_var.add_field(name='remove-channel', value='Remove the channel that the bot uses from the database.', inline=False)
     embed_var.add_field(name='get-channel', value='Returns ID and name of the channel that the bot uses.', inline=False)

@@ -188,7 +188,7 @@ client.remove_command('help')
 @client.command(name='help')
 async def help(ctx):
     embed_var = discord.Embed(title='Commands', description='Use the prefix \'!fetch \' to access the bot, followed by any of these commands.\n**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database.', color=0x0)
-    embed_var.add_field(name='add-account `<screen_name>` `<channel_id>`', value='Add a twitter account to the database. Requires twitter handle (exclude @) and the channel ID.\nUse this to update channel ID.', inline=False)
+    embed_var.add_field(name='add-account `<screen_name>` `<channel_id>`', value='Add a twitter account to the database, requires twitter handle (exclude @). `<channel_id>` is optional, if none specified current channel will be used. Use this command to update channel ID.', inline=False)
     embed_var.add_field(name='remove-account `<screen_name>`', value='Remove the user (and channel) from the database.', inline=False)
     embed_var.add_field(name='get-channel `<screen_name>`', value='Returns ID and name of the channel for this user.', inline=False)
     embed_var.add_field(name='list-accounts', value='List all twitter accounts that the bot looks out for in this server.', inline=False)

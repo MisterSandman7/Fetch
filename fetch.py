@@ -64,8 +64,10 @@ async def get_channel(ctx, screen_name):
 
 @client.command(name='add-account')
 @commands.has_permissions(administrator=True)
-async def add_account(ctx, screen_name, channel_id):
+async def add_account(ctx, screen_name, channel_id = None):
     try:
+        if channel_id == None:
+            channel_id = ctx.message.channel.id
         guild_id = ctx.message.guild.id
         channel_id = int(channel_id)
         user = api.get_user(screen_name)

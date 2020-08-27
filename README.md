@@ -3,8 +3,8 @@
   <img src="./fetch_logo.png">
 </p>
 
-A simple Discord bot that allows servers to track Twitter users by relaying their posts to a specific channel within the server itself.
-Made thanks to the Discord API and the Python Twitter API (Tweepy).
+A simple Discord bot that allows servers to track Twitter users by sending their tweets to a specified channel within a server.
+Made thanks to the Python Discord API (Discord.py) and the Python Twitter API (Tweepy).
 
 ## Bot commands
 Use the prefix '!fetch ' to access the bot, followed by any of these commands.<br />**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database. 

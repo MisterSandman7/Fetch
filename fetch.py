@@ -1,10 +1,9 @@
 #________________________________________________________________________________
 #                                   FETCH v1.1.0
-#A simple Discord bot to relay Twitter messages to servers in specific channels
-#based on requestes from the formers.
-#The bot allows customization of the channel used and the Twitter accounts to
-#look after.
-#UPDATE 1.1.0 : Multi-channel support
+# A simple Discord bot that allows servers to track Twitter users by sending their 
+# tweets to a specified channel within a server. Made thanks to the Python Discord 
+# API (Discord.py) and the Python Twitter API (Tweepy).
+# UPDATE 1.1.0 : Multi-channel support
 #________________________________________________________________________________
 import  discord
 from    discord.ext import  commands, tasks

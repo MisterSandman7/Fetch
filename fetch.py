@@ -61,7 +61,7 @@ async def get_channel(ctx, screen_name):
 #                                   TWITTER
 #________________________________________________________________________________
 
-@client.command(name='add-account')
+@client.command(name='add')
 @commands.has_permissions(administrator=True)
 async def add_account(ctx, screen_name, channel_id = None):
     try:
@@ -98,7 +98,7 @@ async def add_account(ctx, screen_name, channel_id = None):
         print(e.response.text)
         await ctx.send('User was not found.')    
 
-@client.command(name='remove-account')
+@client.command(name='remove')
 @commands.has_permissions(administrator=True)
 async def remove_account(ctx, screen_name):
     guild_id = ctx.message.guild.id
@@ -115,7 +115,7 @@ async def remove_account(ctx, screen_name):
         await ctx.send(f'User {screen_name} was not found in the database.')
     conn.commit()
 
-@client.command(name='list-accounts')
+@client.command(name='list')
 async def list_accounts(ctx):
     accounts_str = ''
     guild_id = ctx.message.guild.id
@@ -196,10 +196,10 @@ client.remove_command('help')
 @client.command(name='help')
 async def help(ctx):
     embed_var = discord.Embed(title='Commands', description='Use the prefix \'!fetch \' to access the bot, followed by any of these commands.\n**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database.', color=0x0)
-    embed_var.add_field(name='add-account `<screen_name>` `<channel_id>`', value='Add a twitter account to the database, requires twitter handle (exclude @). `<channel_id>` is optional, if none specified current channel will be used. Use this command to update channel ID.', inline=False)
-    embed_var.add_field(name='remove-account `<screen_name>`', value='Remove the user (and channel) from the database.', inline=False)
+    embed_var.add_field(name='add `<screen_name>` `<channel_id>`', value='Add a twitter account to the database, requires twitter handle (exclude @). `<channel_id>` is optional, if none specified current channel will be used. Use this command to update channel ID.', inline=False)
+    embed_var.add_field(name='remove `<screen_name>`', value='Remove the user (and channel) from the database.', inline=False)
     embed_var.add_field(name='get-channel `<screen_name>`', value='Returns ID and name of the channel for this user.', inline=False)
-    embed_var.add_field(name='list-accounts', value='List all twitter accounts that the bot looks out for in this server.', inline=False)
+    embed_var.add_field(name='list', value='List all twitter accounts that the bot looks out for in this server.', inline=False)
     embed_var.add_field(name='help', value='The command you\'re seeing right now.', inline=False)
     await ctx.send(embed=embed_var)
 

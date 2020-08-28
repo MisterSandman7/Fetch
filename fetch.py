@@ -122,18 +122,21 @@ async def list_accounts(ctx):
 
     c.execute('select screen_name, channel_id from database where guild_id = (?)', (guild_id, ))
     accounts = c.fetchall()
-    embed_var = discord.Embed(title=f'Account list for {ctx.message.guild.name}')
-    accounts_str = ''
-    channel_name_str = ''
-    channel_id_str = ''
-    for account in accounts:
-        accounts_str += f'- {account[0]}\n'
-        channel_name_str += f'- {client.get_channel(account[1])}\n'
-        channel_id_str += f'{account[1]}\n'
-    embed_var.add_field(name='Account', value=accounts_str, inline=True)
-    embed_var.add_field(name='Channel name', value=channel_name_str, inline=True)
-    embed_var.add_field(name='Channel ID', value=channel_id_str, inline=True)
-    await ctx.send(embed=embed_var)
+    if accounts is not None:
+        embed_var = discord.Embed(title=f'Account list for {ctx.message.guild.name}')
+        accounts_str = ''
+        channel_name_str = ''
+        channel_id_str = ''
+        for account in accounts:
+            accounts_str += f'- {account[0]}\n'
+            channel_name_str += f'{client.get_channel(account[1])}\n'
+            channel_id_str += f'{account[1]}\n'
+        embed_var.add_field(name='Account', value=accounts_str, inline=True)
+        embed_var.add_field(name='Channel name', value=channel_name_str, inline=True)
+        embed_var.add_field(name='Channel ID', value=channel_id_str, inline=True)
+        await ctx.send(embed=embed_var)
+    else:
+        await ctx.send(f'Nothing registered for {ctx.message.guild.name}')
 
 #________________________________________________________________________________
 #                                   TIMESTAMP

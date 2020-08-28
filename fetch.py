@@ -214,13 +214,17 @@ async def update_fetch():
             accounts, channels = get_accounts_and_channels(guild)
             for account, channel_id in zip(accounts, channels):
                 channel = client.get_channel(channel_id)
-                tweet = api.user_timeline(account, count = 1, tweet_mode = "extended", exclude_replies = True, include_rts = False)[0]
-                tweet_link = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
-                tweet_timestamp = (tweet.created_at - datetime.datetime(1970,1,1)).total_seconds()
-                old_timestamp = get_timestamp(guild, account)
-                if tweet_timestamp - old_timestamp > 0:
-                    update_timestamp(guild, account, tweet_timestamp)
-                    await channel.send(tweet_link)
+                #Check that the channel still exists
+                if channel is not None:
+                    tweet = api.user_timeline(account, count = 1, tweet_mode = "extended", exclude_replies = True, include_rts = False)[0]
+                    tweet_link = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
+                    tweet_timestamp = (tweet.created_at - datetime.datetime(1970,1,1)).total_seconds()
+                    old_timestamp = get_timestamp(guild, account)
+                    if tweet_timestamp - old_timestamp > 0:
+                        update_timestamp(guild, account, tweet_timestamp)
+                        await channel.send(tweet_link)
+                else:
+                    print('ERROR: Channel not found!')
     except tweepy.TweepError as e:
         print(e.response.text)
     

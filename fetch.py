@@ -1,5 +1,5 @@
 #________________________________________________________________________________
-#                                   FETCH v1.1.0
+#                                   FETCH v1.1.1
 # A simple Discord bot that allows servers to track Twitter users by sending their 
 # tweets to a specified channel within a server. Made thanks to the Python Discord 
 # API (Discord.py) and the Python Twitter API (Tweepy).

@@ -13,6 +13,10 @@ import  sqlite3
 import  logging
 import  datetime
 import  itertools
+import  os
+import  sys
+
+reset = False
 
 #Init client object and assign prefix
 client = commands.Bot(command_prefix='!fetch ')
@@ -231,10 +235,24 @@ async def update_fetch():
     except tweepy.TweepError as e:
         print(e.response.text)
     
+@tasks.loop(minutes=60.0)
+async def restart():
+    #A simple (and likely placeholder) script to restart the bot.
+    #This is needed because the bot suffers from a hanging problem
+    #I currently am not able to solve.
+    global reset
+    if reset is True:
+        print('Scheduled restart.')
+        update_fetch.stop()
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+    reset = True
+
 @client.event
 async def on_ready():
     print('Bot is online.')
     update_fetch.start()
+    restart.start()
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!fetch help"))
+
 
 client.run(discord_token)

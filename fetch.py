@@ -254,4 +254,5 @@ async def on_ready():
     restart.start()
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!fetch help"))
 
+
 client.run(discord_token)

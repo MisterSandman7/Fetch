@@ -148,7 +148,7 @@ async def info(ctx):
 async def help(ctx):
     try:
         embed_var = discord.Embed(title='Commands', description='Use the prefix \'!fetch \' to access the bot, followed by any of these commands.\n**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database.', color=0x0)
-        embed_var.add_field(name='info', value='General bot statistics and info', inline=False)
+        embed_var.add_field(name='info', value='General bot statistics and info.', inline=False)
         embed_var.add_field(name='add `<screen_name>` `<channel_id>`', value='Add a twitter account to the database, requires twitter handle (exclude @). `<channel_id>` is optional, if none specified current channel will be used. Use this command to update channel ID.', inline=False)
         embed_var.add_field(name='remove `<screen_name>`', value='Remove the user (and channel) from the database.', inline=False)
         embed_var.add_field(name='get-channel `<screen_name>`', value='Returns ID and name of the channel for this user.', inline=False)

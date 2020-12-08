@@ -10,7 +10,7 @@ Made thanks to the Python Discord API (Discord.py) and the Python Twitter API (T
 Use the prefix '!fetch ' to access the bot, followed by any of these commands.<br />**WARNING**: removing the bot from your server will erase all of your Fetch settings from the database. 
 Command | Input | Description
 --------|-------|------------
-**info**| `None` | General bot statistics and info
+**info**| `None` | General bot statistics and info.
 **add** | `<screen_name>` `<channel_id>` | Add a twitter account to the database, requires twitter handle (exclude @). `<channel_id>` is optional, if none specified current channel will be used. Use this command to update channel ID.
 **remove** | `<screen_name>` |Remove a twitter account from the database.
 **get-channel** | `<screen_name>` | Returns ID and name of the channel for this user.

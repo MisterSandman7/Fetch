@@ -65,8 +65,6 @@ async def update_fetch():
         error_str = 'Error!\n `Code : {}`'.format(str(e))
         await channel.send(error_str)
 
-
-
 @client.event
 async def on_ready():
     print('Bot is online.')

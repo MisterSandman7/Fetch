@@ -1,9 +1,8 @@
 import  discord
 from    discord.ext     import  commands
-from    setup           import client, c, conn, api, logger
+from    setup           import client, c, conn, api, logger, version
 from    utils           import get_guilds, get_accounts_and_channels
 import  time
-from    main            import version
 
 @client.command(name='get-channel')
 async def get_channel(ctx, screen_name):
@@ -144,6 +143,9 @@ async def info(ctx):
     embed_var.add_field(name='Twitter accounts', value='For this server : {}\nTotal : {}'.format(accounts_one, accounts_all), inline=False)
     embed_var.add_field(name='Discord Websocket latency', value='{}ms'.format(round(client.latency*1000, 2)), inline=False)
     await ctx.send(embed=embed_var)
+
+#Remove stock help command
+client.remove_command('help')
 
 @client.command(name='help')
 async def help(ctx):

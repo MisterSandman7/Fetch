@@ -5,6 +5,8 @@ from    tokens          import consumer_secret, consumer_token, discord_token
 import  sqlite3
 import  logging
 
+version = '2.0.2'
+
 #Create handler
 logger = logging.getLogger('Fetch!')
 file_handler = logging.FileHandler('debug/output.log')
@@ -38,6 +40,3 @@ c.execute('''create table if not exists database (
             timestamp   integer,
             channel_id  integer
             )''')
-
-#Remove stock help command
-client.remove_command('help')

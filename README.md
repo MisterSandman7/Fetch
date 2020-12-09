@@ -1,4 +1,4 @@
-# Fetch! 2.0.1
+# Fetch! 2.0.2
 <p align="center">
   <img src="./fetch_logo.png">
 </p>

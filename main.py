@@ -1,5 +1,5 @@
 #________________________________________________________________________________
-#                                   FETCH v2.0
+#                                   FETCH
 # A simple Discord bot that allows servers to track Twitter users by sending their 
 # tweets to a specified channel within a server. Made thanks to the Python Discord 
 # API (Discord.py) and the Python Twitter API (Tweepy).
@@ -13,8 +13,6 @@ from    utils       import remove_guilds, get_guilds, get_accounts_and_channels,
 from    discord.ext import tasks
 import  datetime
 import  tweepy
-
-version = '2.0.1'
 
 @tasks.loop(seconds=30.0)
 async def update_fetch():

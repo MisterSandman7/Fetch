@@ -12,6 +12,7 @@ from user_utils import api, discord
 from utils import remove_guilds, get_guilds, get_accounts_and_channels, get_timestamp, update_timestamp
 from discord.ext import tasks
 import datetime
+import tweepy
 
 @tasks.loop(seconds=30.0)
 async def update_fetch():
@@ -52,6 +53,7 @@ async def update_fetch():
 
                     else:
                         print('ERROR: Channel not found!')
+
                 #In case added account has no tweets
                 except IndexError as e:
                     logger.exception(e)
@@ -59,6 +61,23 @@ async def update_fetch():
                     error_str = 'Error! User {} has no tweets!'.format(account)
                     await channel.send(error_str)
                     continue
+
+                #In case rate limit in exceeded
+                except tweepy.RateLimitError as e:
+                    logger.exception(e)
+                    print('GUILD : ' + client.get_guild(guild).name + ' - ERROR : ' + str(e))
+                    error_str = 'Error!\nTwitter Rate Limit exceeded!'
+                    await channel.send(error_str)
+
+                #Generic Twitter error
+                except tweepy.TweepError as e:
+                    logger.exception(e)
+                    print('GUILD : ' + client.get_guild(guild).name + ' - ERROR : ' + str(e))
+                    error_str = 'Error!\n `Code : {}`'.format(str(e))
+                    await channel.send(error_str)
+                    continue   
+
+    #Generic exception error handling                 
     except Exception as e:
         logger.exception(e)
         print('GUILD : ' + client.get_guild(guild).name + ' - ERROR : ' + str(e))

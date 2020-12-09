@@ -20,7 +20,12 @@ client = commands.Bot(command_prefix='!fetch ')
 
 #Twitter connection
 auth = tweepy.AppAuthHandler(consumer_token,consumer_secret)
-api = tweepy.API(auth)
+api = tweepy.API(auth, 
+                retry_count=3,
+                retry_delay=5,
+                wait_on_rate_limit=True,
+                wait_on_rate_limit_notify=True,
+                timeout=60)
 
 #Connect to database
 conn = sqlite3.connect('fetch.db')

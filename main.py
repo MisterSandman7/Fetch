@@ -42,24 +42,25 @@ async def update_fetch():
                                                 tweet_mode = "extended",
                                                 exclude_replies = True,
                                                 include_rts = False)[0]
-
-                    tweet_timestamp = (tweet.created_at - datetime.datetime(1970,1,1)).total_seconds()
-                    tweet_link = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
-                    old_timestamp = get_timestamp(guild, account)
-                    if tweet_timestamp - old_timestamp > 0:
-                        update_timestamp(guild, account, tweet_timestamp)
-                        await channel.send(tweet_link)
-
+                    if tweet:
+                        tweet_timestamp = (tweet.created_at - datetime.datetime(1970,1,1)).total_seconds()
+                        tweet_link = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
+                        old_timestamp = get_timestamp(guild, account)
+                        if tweet_timestamp - old_timestamp > 0:
+                            update_timestamp(guild, account, tweet_timestamp)
+                            await channel.send(tweet_link)
+                    else:
+                        print('Test')
                 else:
                     print('ERROR: Channel not found!')
 
             #In case added account has no tweets
             except IndexError as e:
-                logger.exception(e)
-                print('GUILD : ' + client.get_guild(guild).name + ' - ERROR : ' + str(e))
-                error_str = 'Error!\nUser {} has no tweets!\nRemoving user...'.format(account)
-                await channel.send(error_str)
-                remove_account(guild, account)
+                #logger.exception(e)
+                #print('GUILD : ' + client.get_guild(guild).name + ' - ERROR : ' + str(e))
+                #error_str = 'Error!\nUser {} has no tweets!\nRemoving user...'.format(account)
+                #await channel.send(error_str)
+                #remove_account(guild, account)
                 continue
 
             #In case rate limit in exceeded

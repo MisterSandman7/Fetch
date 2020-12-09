@@ -1,8 +1,9 @@
-import discord
-from    discord.ext import  commands
-from setup import client, c, conn, api, logger
-from utils import get_guilds, get_accounts_and_channels
-import time
+import  discord
+from    discord.ext     import  commands
+from    setup           import client, c, conn, api, logger
+from    utils           import get_guilds, get_accounts_and_channels
+import  time
+from    main            import version
 
 @client.command(name='get-channel')
 async def get_channel(ctx, screen_name):
@@ -138,7 +139,7 @@ async def info(ctx):
 
     embed_var = discord.Embed(title='Info')
     embed_var.add_field(name='Description', value='A simple Discord bot that allows servers to track Twitter users by sending their tweets to a specified channel within a server. Made thanks to the Python Discord API (Discord.py) and the Python Twitter API (Tweepy).', inline=False)
-    embed_var.add_field(name='Version', value='2.0', inline=False)
+    embed_var.add_field(name='Version', value='{}'.format(version), inline=False)
     embed_var.add_field(name='Guilds', value='{}'.format(guilds), inline=False)
     embed_var.add_field(name='Twitter accounts', value='For this server : {}\nTotal : {}'.format(accounts_one, accounts_all), inline=False)
     embed_var.add_field(name='Discord Websocket latency', value='{}ms'.format(round(client.latency*1000, 2)), inline=False)

@@ -1,4 +1,4 @@
-from setup import client, c, conn
+from    setup   import client, c, conn
 
 def update_timestamp(guild_id, screen_name, timestamp):
     c.execute('update database set timestamp = (?) where guild_id = (?) and screen_name = (?)', (timestamp, guild_id, screen_name))

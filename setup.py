@@ -1,8 +1,8 @@
-import discord
-from    discord.ext import  commands
-import tweepy
-from tokens import consumer_secret, consumer_token, discord_token
-import sqlite3
+import  discord
+from    discord.ext     import  commands
+import  tweepy
+from    tokens          import consumer_secret, consumer_token, discord_token
+import  sqlite3
 import  logging
 
 #Create handler

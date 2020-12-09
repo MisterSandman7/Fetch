@@ -7,12 +7,14 @@
 # UPDATE 2.0 : Twitter thread support and rewrite
 #________________________________________________________________________________
 
-from setup import discord_token, client, logger
-from user_utils import api, discord
-from utils import remove_guilds, get_guilds, get_accounts_and_channels, get_timestamp, update_timestamp
-from discord.ext import tasks
-import datetime
-import tweepy
+from    setup       import discord_token, client, logger
+from    user_utils  import api, discord
+from    utils       import remove_guilds, get_guilds, get_accounts_and_channels, get_timestamp, update_timestamp
+from    discord.ext import tasks
+import  datetime
+import  tweepy
+
+version = '2.0.1'
 
 @tasks.loop(seconds=30.0)
 async def update_fetch():

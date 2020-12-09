@@ -48,3 +48,12 @@ def remove_guilds():
     for guild in trimmed_guilds:
         c.execute('delete from database where guild_id = (?)', (guild,))
         conn.commit()
+
+def remove_account(guild_id, screen_name):
+    #Look if the user is in the database for the server
+    c.execute('select * from database where screen_name = (?) and guild_id = (?)', (screen_name, guild_id))
+    row = c.fetchone()
+    if row is not None:
+    #User exists, remove it
+        c.execute('delete from database where screen_name = (?) and guild_id = (?)', (screen_name, guild_id))
+        conn.commit()

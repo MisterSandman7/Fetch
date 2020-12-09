@@ -104,7 +104,8 @@ async def list_accounts(ctx):
         c.execute('select screen_name, channel_id from database where guild_id = (?)', (guild_id, ))
         accounts = c.fetchall()
 
-        if accounts is not None:
+        #Check that the list is not empty
+        if len(accounts) != 0:
             embed_var = discord.Embed(title=f'Account list for {ctx.message.guild.name}')
             accounts_str = ''
             channel_name_str = ''
@@ -129,15 +130,17 @@ async def list_accounts(ctx):
 @client.command(name='info')
 async def info(ctx):
     guild_list = get_guilds()
-    guilds = len(guild_list)
+    guilds = len(client.guilds)
     accounts_one = len(get_accounts_and_channels(ctx.message.guild.id)[0])
     accounts_all = 0
 
+    #Calculate the total Twitter accounts from all guilds
     for guild in guild_list:
         accounts_all += len(get_accounts_and_channels(guild)[0])
 
     embed_var = discord.Embed(title='Info')
     embed_var.add_field(name='Description', value='A simple Discord bot that allows servers to track Twitter users by sending their tweets to a specified channel within a server. Made thanks to the Python Discord API (Discord.py) and the Python Twitter API (Tweepy).', inline=False)
+    embed_var.add_field(name='Contact', value='Discord author username : Mr.Sandman#9172\n Github repository : https://github.com/MisterSandman7/Fetch')
     embed_var.add_field(name='Version', value='{}'.format(version), inline=False)
     embed_var.add_field(name='Guilds', value='{}'.format(guilds), inline=False)
     embed_var.add_field(name='Twitter accounts', value='For this server : {}\nTotal : {}'.format(accounts_one, accounts_all), inline=False)

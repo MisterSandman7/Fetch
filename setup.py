@@ -5,7 +5,7 @@ from    tokens          import consumer_secret, consumer_token, discord_token
 import  sqlite3
 import  logging
 
-version = '2.0.2'
+version = '2.0.3'
 
 #Create handler
 logger = logging.getLogger('Fetch!')

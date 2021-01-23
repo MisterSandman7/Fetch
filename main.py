@@ -13,6 +13,7 @@ from    utils       import remove_guilds, get_guilds, get_accounts_and_channels,
 from    discord.ext import tasks
 import  datetime
 import  tweepy
+import  pytz
 
 @tasks.loop(seconds=30.0)
 async def update_fetch():
@@ -46,9 +47,12 @@ async def update_fetch():
                         tweet_timestamp = (tweet.created_at - datetime.datetime(1970,1,1)).total_seconds()
                         tweet_link = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
                         old_timestamp = get_timestamp(guild, account)
+                        #Check that tweet is actually new
                         if tweet_timestamp - old_timestamp > 0:
                             update_timestamp(guild, account, tweet_timestamp)
-                            await channel.send(tweet_link)
+                            #Post only if it's not older than 5 minutes
+                            if  (tweet_timestamp - ((datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).total_seconds() - 5*60)) > 0:
+                                await channel.send(tweet_link)
                     else:
                         print('Test')
                 else:
